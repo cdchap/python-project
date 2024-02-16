@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-100">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Job Fit Analysis|Project</title>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link href="output.css" rel="stylesheet">
+</head>
+
+<body class="h-full" id="app">
+	<div class="min-h-full">
+		<div class="bg-gray-800 pb-32">
+			<nav x-data="{ open: false }" class="bg-gray-800">
+				<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+					<div class="border-b border-gray-700">
+						<div class="flex h-16 items-center justify-between px-4 sm:px-0">
+							<div class="flex items-center">
+								<div class="flex-shrink-0">
+									<div class="h-8 w-8">
+										<svg height="100" width="100">
+											<circle cx="15" cy="15" r="15" fill="#FFCB05" />
+										</svg>
+									</div>
+								</div>
+								<div class="hidden md:block">
+									<div class="ml-10 flex items-baseline space-x-4">
+										<a href="index.html"
+											class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+											aria-current="page">Home</a>
+										<a href="team.html"
+											class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
+										<a href="project.html"
+											class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Project</a>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="-mr-2 flex md:hidden">
+								<!-- Mobile menu button -->
+								<button x-on:click="open = ! open" type="button"
+									class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+									aria-controls="mobile-menu" aria-expanded="false">
+									<span class="absolute -inset-0.5"></span>
+									<span class="sr-only">Open main menu</span>
+									<!-- Menu open: "hidden", Menu closed: "block" -->
+									<svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+										stroke="currentColor" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round"
+											d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+									</svg>
+									<!-- Menu open: "block", Menu closed: "hidden" -->
+									<svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+										stroke="currentColor" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mobile menu, show/hide based on menu state. -->
+				<div x-show="open" class="border-b border-gray-700 md:hidden" id="mobile-menu">
+					<div class="space-y-1 px-2 py-3 sm:px-3">
+						<a href="index.html"
+							class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
+						<a href="team.html"
+							class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+						<a href="project.html"
+							class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Project</a>
+					</div>
+			</nav>
+			<header class="py-10">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<h1 class="text-3xl md:text-6xl font-bold tracking-tight text-white">How it Was Built</h1>
+				</div>
+			</header>
+		</div>
+
+		<main class="-mt-32">
+			<div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+				<div class="rounded-lg bg-white px-5 py-6 shadow sm:px-6">
+					<div class="prose lg:prose-l mx-auto mt-16">
+				<h2 id="preamble">Preamble</h2>
+<p><em>February 9, 2025</em>
+The objective of this project was to use provide a job description and resume to the <a href="https://platform.openai.com/docs/overview">OpenAI API</a>. The API would then return a short paragraph stating whether the resume was suitable for the job. To accomplish this, a single webpage was created that makes a request to an <a href="https://aws.amazon.com/pm/lambda/">AWS Lambda function</a> which processes the request and returns OpenAI&#39;s response.</p>
+<p>For brevity the code examples that follow will only contain only code necessary to explain the concept being discussed. When available, relevant links to documentation, or helpful articles will be provided.</p>
+<p>The author and creator of the site is not a web development professional or an expert in AWS. Code may not follow best practices, but it works! It is not suggested you follow these examples in a real working environment. The project was made as an assignment for classes being given at <a href="https://www.itexps.net/">IT Expert System</a> out of Schaumburg, Illinois.</p>
+<h2 id="technology">Technology</h2>
+<p>To accomplish this the following technologies were used.</p>
+<ul>
+<li><a href="https://tailwindcss.com/">Tailwindcss</a> and <a href="https://tailwindui.com/">Tailwindui components</a> for page and form styling (including typography and form plugins were used)</li>
+<li><a href="https://alpinejs.dev/">Alpinejs</a> for interactivity and making the request</li>
+<li><a href="https://aws.amazon.com/api-gateway/">AWS API Gateway</a> for handling the API and requests</li>
+<li><a href="https://aws.amazon.com/pm/lambda/">AWS Lambda</a> with a <a href="https://www.python.org/">Python 3.9</a> runtime to process the request<ul>
+<li>OpenAI python library</li>
+<li>Python&#39;s built in JSON library</li>
+</ul>
+</li>
+<li><a href="https://aws.amazon.com/pm/serv-s3/">AWS S3 Bucket</a> for hosting the webpage</li>
+</ul>
+<h2 id="creating-the-page-locally">Creating the Page Locally</h2>
+<p>The first step was to create a <code>src</code> directory, a blank <code>index.html</code> file, and blank <code>input.css</code> file. Then install Tailwindcss following the <a href="https://tailwindcss.com/docs/installation">install documentation</a>. Some basic content was added to the <code>index.html</code> and a link to the <code>output.css</code> file was added to the <code>&lt;head&gt;</code> to link up the output of the npx command (found in the Tailwind installation instructions) that is run to watch for any changes.</p>
+<pre><code class="lang-bash">npx tailwindcss -<span class="hljs-selector-tag">i</span> ./src/<span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.css</span> -o ./src/output<span class="hljs-selector-class">.css</span> --watch
+</code></pre>
+<p>A few Tailwind classes were added to make sure that the set-up was running properly. Example below:</p>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Job Fit Analysis<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"output.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container-sm mx-auto px-4 font-sans"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-6xl font-bold text-center"</span>&gt;</span>
+                Job fit analysis
+            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Now that the page has been created we can view it in our browser. To do this you can right click on your file <code>index.html</code> in a finder window (mac) or file explorer (windows), then select <code>Open with&gt;Firefox</code></p>
+<h2 id="create-lambda-function">Create Lambda function</h2>
+<p>The ultimate purpose of the website is for a user to see if their resume is suitable for a job description. The user will provide a resume and job description via a form, and that data will be sent via a request to an API endpoint. The API will be created and managed with AWS API Gateway. The endpoint will then be associated with a Lambda function, written in Python, that will handle the processing of the data and returning a response.</p>
+<p>First let&#39;s take a brief moment to look at what <a href="https://aws.amazon.com/lambda/">Lambda functions</a> are. </p>
+<blockquote>
+<p>AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers.</p>
+</blockquote>
+<p>This project was a perfect use case for Lambda. The site only does one thing! It asks OpenAI to compare a resume and job description. Provisioning and an entire server for this would be wasteful and expensive, as it needs to be running all times. Making an API call to the endpoint triggers the event required (event-driven from above) to run the code.</p>
+<p>As is the case with many AWS services, a Lambda function can be created with using the AWS Console, <a href="https://aws.amazon.com/cli/">AWS cli</a>, or <a href="https://aws.amazon.com/developer/tools/">AWS SDKs</a>. The lambda function for this project was created with the <a href="https://us-east-2.console.aws.amazon.com/lambda/home?region=us-east-2#/begin">Lambda AWS console</a> with the settings found below. </p>
+<ul>
+<li><strong>Author from scratch selected</strong></li>
+<li>Function name: <strong>compare-openai</strong></li>
+<li>Runtime: <strong>Python 3.9</strong> (<em>why 3.9 and not another version? It has to do with layers which will be covered later</em>)</li>
+<li>Architecture: <strong>x86_64</strong></li>
+</ul>
+<p>A more detailed tutorial on how to create a function with the console can be found in the AWS documentation <a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html#getting-started-create-function">here</a>.</p>
+<p>AWS directs you to an online code editor that has some boiler plate code that returns a status code and a body with &quot;Hello from lambda!&quot; </p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> json
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lambda_handler</span><span class="hljs-params">(event, context)</span>:</span>
+    <span class="hljs-comment"># TODO implement</span>
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">'statusCode'</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">'body'</span>: json.dumps(<span class="hljs-string">'Hello from Lambda!'</span>)
+    }
+</code></pre>
+<p>To ensure that a function is available it needs to be saved (cmd+s) and then deployed by clicking the button labeled &quot;Deploy&quot; found above the code editor. The function was tested after deployment and returned the following, as expected: </p>
+<pre><code class="lang-json">{
+  <span class="hljs-attr">"statusCode"</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">"body"</span>: <span class="hljs-string">"\"Hello from Lambda!\""</span>
+}
+</code></pre>
+<p>Of course the goal was to do more with the function than just return a status code and message. The function needed to communicate with the OpenAI API and run something that OpenAI calls &quot;chat completions&quot;. All Lambda functions require a <strong>lambda handler</strong> that takes an event and a context. For the website the even will be a request with a json payload containing the resume and job description. At this point in the process, it was only necessary to have the function return <em>anything</em> from the OpenAI API. The <a href="https://platform.openai.com/docs/quickstart?context=python">OpenAI documentation</a> provides an example where the system acts as poet and is prompted to compose a poem. Combining the lambda requirements and the basic code from OpenAI the below code was created for testing.</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lambda_handler</span><span class="hljs-params">(event, context)</span>:</span>
+    <span class="hljs-comment"># TODO implement</span>
+    client = OpenAI()
+    completion = client.chat.completions.create(
+    model=<span class="hljs-string">"gpt-3.5-turbo"</span>,
+    messages=[
+        {
+            <span class="hljs-string">"role"</span>: <span class="hljs-string">"system"</span>,
+            <span class="hljs-string">"content"</span>: <span class="hljs-string">"You are a poetc assistant, skilled in explaining complex programming concepts with creative flair."</span>,
+        },
+        {
+            <span class="hljs-string">"role"</span>: <span class="hljs-string">"user"</span>,
+            <span class="hljs-string">"content"</span>: <span class="hljs-string">"Compose a poem that explains the concept of recursion in programming."</span>,
+        },
+        ],
+    )
+
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">'statusCode'</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">'body'</span>: completion.choices[<span class="hljs-number">0</span>].message.content
+    }
+</code></pre>
+<p>Now, those readers with a keen eye and experience with Python might be curious how the the above code will import a library that has not been installed at any point during the process. Additionally, the description of Lambda functions from AWS stated that Lambda &quot;lets you run code for virtually any type of application or backend service <strong>without provisioning or managing servers</strong>.&quot; Where would the <code>openai</code> library be installed? The answer is something called &quot;<a href="https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html">Layers</a>&quot;. </p>
+<p>Without utilizing a layer testing the above code returned the following error, in which it clearly states that there is no module name openai.</p>
+<pre><code class="lang-python">Response
+{
+  <span class="hljs-string">"errorMessage"</span>: <span class="hljs-string">"Unable to import module 'lambda_function': No module named 'openai'"</span>,
+  <span class="hljs-string">"errorType"</span>: <span class="hljs-string">"Runtime.ImportModuleError"</span>,
+  <span class="hljs-string">"requestId"</span>: <span class="hljs-string">"a7f0ddcc-de64-4b72-9356-6eead34085ca"</span>,
+  <span class="hljs-string">"stackTrace"</span>: <span class="hljs-string">[]</span>
+}
+</code></pre>
+<p>Layers are described in the documentation this way:</p>
+<blockquote>
+<p>A Lambda layer is a .zip file archive that contains supplementary code or data. Layers usually contain library dependencies, a <a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html">custom runtime</a>, or configuration files.</p>
+</blockquote>
+<p><strong>Python version 3.9</strong> has been mentioned twice thus far in this write up. First in the technology section and again in the runtime settings earlier in this section. Creating the required <code>.zip</code> file for the layer is the reason for using this specific version of python. As stated in the documentation</p>
+<blockquote>
+<p>The first step to creating a layer is to bundle all of your layer content into a .zip file archive. Because Lambda functions run on <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">Amazon Linux</a>, your layer content must be able to compile and build in a Linux environment. If you build packages on your local Windows or Mac machine, you’ll get output binaries for that operating system by default. These binaries may not work properly when you upload them to Lambda.</p>
+</blockquote>
+<p>The final two sentences are most certainly true as attempts to create the required file on a Mac ended with errors about missing modules called pydantic_core. If you are without access to a linux based server one can be spun up in various cloud services for very little money (e.g. [AWS EC2], [Digital Ocean]). It is important that the Python version that is used to install libraries is the same Python version that is selected for the runtime of the Lambda function. Version 3.9 was chosen because the author used the AWS browser based terminal <a href="https://aws.amazon.com/cloudshell/">CloudShell</a> to install libraries, zip archive them, and push them to an S3 bucket for lambdas access.</p>
+<p>Before anything can be pushed to a S3 Bucket one had to be created. It is worth mentioning that all three AWS services used in this project are all regional. If the reader is following along you should create the S3 bucket used to store the <code>.zip</code> file and the following API Gateway in the same region as the Lambda function. Information about AWS Regions can be found <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">here</a>.</p>
+<p>Once the S3 bucket was created (<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">documentation</a>) the following commands were executed in CloudShell, again taking care that the shell matches the region. In these commands the <code>openai</code> library is installed and archived in the proper format as stated by the <a href="https://docs.aws.amazon.com/lambda/latest/dg/packaging-layers.html">packaging layers documentation</a>.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># Make a directory for the packages</span>
+mkdir packages  
+<span class="hljs-keyword">cd</span> packages
+
+<span class="hljs-comment"># Create a python virtual environment and activate it</span>
+python3 -m venv venv  
+<span class="hljs-keyword">source</span> venv/bin/activate
+
+<span class="hljs-comment"># Create the required python named dirctory</span>
+mkdir python  
+<span class="hljs-keyword">cd</span> python
+
+<span class="hljs-comment"># install openai libary</span>
+pip install openai -t .
+
+<span class="hljs-comment"># Remove any unnecessary files</span>
+rm -rf *dist-<span class="hljs-keyword">info</span>
+
+<span class="hljs-comment"># Return to packages directory</span>
+rm -rf *dist-<span class="hljs-keyword">info</span>
+
+<span class="hljs-comment"># Archive the python directory</span>
+zip -r lambda-<span class="hljs-keyword">package</span>.zip python
+
+<span class="hljs-comment"># Use aws cli to copy archived directory to S3 Bucket</span>
+aws s3 cp lambda-<span class="hljs-keyword">package</span>.zip  s3://your-s3-bucket-name/
+</code></pre>
+<p>After the archive was copied to the bucket a layer is added to the lambda function. This can be found in the console by navigating to the Lambda function and selecting the layers option from the menu on the left and then selecting &quot;Create layer&quot;. </p>
+<ol>
+<li>Give the layer a name</li>
+<li>select Upload a file from Amazon S3 and entering the uri for the <code>.zip</code> file (<em>e.g.</em> s3://your-s3-bucket-name//lambda-package.zip)</li>
+<li>select __x86<em>64</em></li>
+<li>Choose compatible runtimes Python 3.9</li>
+<li>Create</li>
+</ol>
+<p>The Layer was then added to the function by navigating to the layer in the console and scrolling down to the layers section and clicking &quot;Add layer&quot;.</p>
+<ol>
+<li>Select Custom layer option</li>
+<li>select the layer that was just created </li>
+</ol>
+<p>Now that the function had access to the required Python libraries there was another crucial piece that needed to be added. The OpenAI API requires an API Key. This can be obtained. An API key can be created by creating an account, logging in, and creating one <a href="https://platform.openai.com/api-keys">here</a>.</p>
+<p>To allow the Lambda function access to the key it was put in the environment variables section of the Lambda function. This section can be found in the <strong>configuration tab</strong> found just below the function visual layout in the AWS Console. Add the API key with the key name <code>OPENAI_API_KEY</code> and the value of the Open API key obtained from OpenAI. </p>
+<p>Two lines were then added to the function code to use the newly created <code>OPENAI_API_KEY</code>. The os library was imported at the top, and the environment variable was added within the code block.</p>
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> json
+<span class="hljs-comment"># NEW LINE ADDED</span>
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lambda_handler</span><span class="hljs-params">(event, context)</span>:</span>
+    <span class="hljs-comment"># Give the function access to the API Key</span>
+    os.environ.get(<span class="hljs-string">'OPENAI_AI_KEY'</span>)
+    client = OpenAI()
+    completion = client.chat.completions.create(
+    model=<span class="hljs-string">"gpt-3.5-turbo"</span>,
+    messages=[
+        {
+            <span class="hljs-string">"role"</span>: <span class="hljs-string">"system"</span>,
+            <span class="hljs-string">"content"</span>: <span class="hljs-string">"You are a poetc assistant, skilled in explaining complex programming concepts with creative flair."</span>,
+        },
+        {
+            <span class="hljs-string">"role"</span>: <span class="hljs-string">"user"</span>,
+            <span class="hljs-string">"content"</span>: <span class="hljs-string">"Compose a poem that explains the concept of recursion in programming."</span>,
+        },
+        ],
+    )
+
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-string">'statusCode'</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-string">'body'</span>: completion.choices[<span class="hljs-number">0</span>].message.content
+    }
+</code></pre>
+<p>Running the test again with this code should return a poem &quot;that explains the concept of recursion in programming&quot;.</p>
+<p>This code was modified later to fit the needs of the project, but before that was done an API Gateway was created so that the website has an endpoint to reach.</p>
+<h2 id="api-gateway">API Gateway</h2>
+<h2 id="create-api-gateway">Create api gateway</h2>
+<ul>
+<li>create endpoint<ul>
+<li>get</li>
+<li>post</li>
+<li>associate them with correct lambda function</li>
+</ul>
+</li>
+<li>make an state</li>
+<li>enable cors</li>
+<li>deploy<h2 id="add-alpine">Add alpine</h2>
+</li>
+<li>add alpine</li>
+<li>add data</li>
+<li>add var</li>
+<li>add function</li>
+<li>assign click event to function<ul>
+<li>prevent default</li>
+</ul>
+</li>
+<li>create fetch request to simple api endpoint<ul>
+<li>get</li>
+<li>put response into var</li>
+<li>display var in a div</li>
+</ul>
+</li>
+<li>change request to Post<ul>
+<li>do the same as abov<h2 id="deploy-to-aws-s3">Deploy to AWS S3</h2>
+</li>
+</ul>
+</li>
+<li>create bucket</li>
+<li>make it public</li>
+<li>set proper polciy for website</li>
+<li>add cors policy<ul>
+<li>headers to only the aws end point to start</li>
+</ul>
+</li>
+<li></li>
+</ul>
+	
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>
